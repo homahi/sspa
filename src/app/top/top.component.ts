@@ -14,7 +14,7 @@ export class TopComponent implements OnInit {
   }
 
   goToProblem() {
-    this.router.navigate(['/problem', "1"]);
+    this.router.navigate(['/problem', "0"]);
   }
 
 }

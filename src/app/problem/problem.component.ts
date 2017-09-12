@@ -11,7 +11,7 @@ export class ProblemComponent implements OnInit {
   problems = [
     {
       description: 'What is truth?',
-      code: 'function problem() { return __;}'
+      code: 'return __;'
     },
     {
       description: 'Simple Math',
@@ -20,14 +20,27 @@ export class ProblemComponent implements OnInit {
   ];
   problem: any;
   problemId: string;
+  message: string;
 
   constructor(private route: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
     this.problemId = this.route.snapshot.paramMap.get('id');
-
-
+    this.problem = 'function problem() {' + this.problems[this.problemId].code + '}';
   }
 
+  checkAnswerClick(answer) {
+    if (this.checkAnswer(answer)) {
+      this.message = 'Correct!';
+    } else {
+      this.message = 'Incorrect!';
+    }
+  }
+  checkAnswer(answer) {
+    const test = this.problems[this.problemId].code.replace('__', answer);
+    console.log(new Function(test));
+    // typescriptではevalを使えないらしい
+    return new Function(test)();
+  }
 }

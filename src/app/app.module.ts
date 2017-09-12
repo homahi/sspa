@@ -5,7 +5,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { TopComponent } from './top/top.component';
 import { ProblemComponent } from './problem/problem.component';
-import { RouterTestingModule } from '@angular/router/testing';
 
 @NgModule({
   declarations: [
@@ -14,7 +13,6 @@ import { RouterTestingModule } from '@angular/router/testing';
     ProblemComponent
   ],
   imports: [
-    RouterTestingModule,
     RouterModule.forRoot(
       [{
         path: 'top',

@@ -1,10 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { trigger, transition, style, animate } from '@angular/core';
+
 import 'rxjs/add/operator/switchMap';
 @Component({
   selector: 'app-problem',
   templateUrl: './problem.component.html',
-  styleUrls: ['./problem.component.css']
+  styleUrls: ['./problem.component.css'],
+  animations: [
+    trigger(
+      'enterAnimation', [
+        transition(':enter', [
+          style({ transform: 'translateX(100%)', opacity: 0 }),
+          animate('500ms', style({ transform: 'translateX(0)', opacity: 1 }))
+        ])
+      ]
+    )
+  ]
 })
 export class ProblemComponent implements OnInit {
 
@@ -21,6 +33,8 @@ export class ProblemComponent implements OnInit {
   problem: any;
   problemId: string;
   message: string;
+  isCorrect: boolean;
+  isShowResult = false;
 
   constructor(private route: ActivatedRoute,
     private router: Router) { }
@@ -31,10 +45,13 @@ export class ProblemComponent implements OnInit {
   }
 
   checkAnswerClick(answer) {
+    this.isShowResult = true;
     if (this.checkAnswer(answer)) {
       this.message = 'Correct!';
+      this.isCorrect = !this.isCorrect;
     } else {
       this.message = 'Incorrect!';
+      this.isCorrect = !this.isCorrect;
     }
   }
   checkAnswer(answer) {

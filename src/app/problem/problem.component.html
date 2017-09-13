@@ -5,6 +5,9 @@
   <textarea class="col-md-12" name="" id="" cols="5" rows="5" #answer></textarea>
   <div>
     <button class="btn btn-primary check-btn" (click)="checkAnswerClick(answer.value)">Check Answer</button>
-    <p class="result">{{message}}</p>
+    <p *ngIf="isShowResult" class="result">
+      <span *ngIf="isCorrect" [@enterAnimation]>{{message}}</span>
+      <span *ngIf="!isCorrect" [@enterAnimation]>{{message}}</span>
+    </p>
   </div>
 </div>

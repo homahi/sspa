@@ -40,8 +40,13 @@ export class ProblemComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.problemId = this.route.snapshot.paramMap.get('id');
-    this.problem = 'function problem() {' + this.problems[this.problemId].code + '}';
+    this.route.params.subscribe(params => {
+      this.problemId = params['id'];
+      this.problem = 'function problem() {' + this.problems[this.problemId].code + '}';
+      this.message = '';
+      this.isCorrect = false;
+    });
+
   }
 
   checkAnswerClick(answer) {

@@ -6,8 +6,9 @@
   <div>
     <button class="btn btn-primary check-btn" (click)="checkAnswerClick(answer.value)">Check Answer</button>
     <p *ngIf="isShowResult" class="result">
-      <span *ngIf="isCorrect" [@enterAnimation]>{{message}}</span>
-      <span *ngIf="!isCorrect" [@enterAnimation]>{{message}}</span>
+      <!--Animation用に表示するDOMを切り替える  -->
+      <span *ngIf="isCorrect" [@enterAnimation]>{{message}}<a *ngIf="isCorrect" [routerLink]="['/problem',1]" (click)="answer.value=''">Next Problem</a></span>
+      <span *ngIf="!isCorrect" [@enterAnimation]>{{message}}<a *ngIf="isCorrect" [routerLink]="['/problem',1]" (click)="answer.value=''">Next Problem</a></span>
     </p>
   </div>
 </div>

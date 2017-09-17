@@ -32,6 +32,7 @@ export class ProblemComponent implements OnInit {
   ];
   problem: any;
   problemId: string;
+  nextProblemId: number;
   message: string;
   isCorrect: boolean;
   isShowResult = false;
@@ -42,6 +43,7 @@ export class ProblemComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.problemId = params['id'];
+      this.nextProblemId = +this.problemId + 1;
       this.problem = 'function problem() {' + this.problems[this.problemId].code + '}';
       this.message = '';
       this.isCorrect = false;

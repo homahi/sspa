@@ -5,12 +5,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { TopComponent } from './top/top.component';
 import { ProblemComponent } from './problem/problem.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopComponent,
-    ProblemComponent
+    ProblemComponent,
+    NavigationComponent
   ],
   imports: [
     RouterModule.forRoot(

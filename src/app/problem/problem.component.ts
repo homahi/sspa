@@ -27,7 +27,7 @@ export class ProblemComponent implements OnInit {
     },
     {
       description: 'Simple Math',
-      code: 'function problem() { return 42 === 6 * __;}'
+      code: 'return 42 === 6 * __;'
     }
   ];
   problem: any;
@@ -65,6 +65,10 @@ export class ProblemComponent implements OnInit {
     const test = this.problems[this.problemId].code.replace('__', answer);
     console.log(new Function(test));
     // typescriptではevalを使えないらしい
-    return new Function(test)();
+    try {
+      return new Function(test)();
+    } catch (e) {
+      return false;
+    }
   }
 }

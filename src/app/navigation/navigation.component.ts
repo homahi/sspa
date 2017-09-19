@@ -9,6 +9,7 @@ import 'rxjs/add/operator/filter';
 })
 export class NavigationComponent implements OnInit {
   path: any;
+  nextProblemId;
   isShowSkip: boolean;
   constructor(private router: Router, private route: ActivatedRoute) { }
 
@@ -16,8 +17,8 @@ export class NavigationComponent implements OnInit {
     this.router.events
       .filter(event => event instanceof NavigationEnd)
       .subscribe((event: NavigationEnd) => {
-        console.log(location.pathname);
         this.isShowSkip = this.router.url.indexOf('problem') < 0 ? false : true;
+        this.nextProblemId = +this.router.url.slice(-1) + 1;
       });
   }
 

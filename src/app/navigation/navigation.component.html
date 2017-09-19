@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse" id="navbarEexample">
       <ul class="nav navbar-nav">
         <li><a [routerLink]="['/problem',0]">Start</a></li>
-        <li *ngIf="isShowSkip"><a [routerLink]="['/problem',0]">Skip</a></li>
+        <li *ngIf="isShowSkip"><a [routerLink]="['/problem',nextProblemId]">Skip</a></li>
       </ul>
     </div>
   </div>

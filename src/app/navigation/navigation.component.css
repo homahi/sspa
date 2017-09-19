@@ -1,0 +1,5 @@
+.fixed-top {
+  position: fixed;
+  top: 0px;
+  z-index: 1024;
+}
